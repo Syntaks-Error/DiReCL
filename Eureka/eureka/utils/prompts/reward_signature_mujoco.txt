@@ -1,0 +1,3 @@
+def compute_reward(obs: torch.Tensor, action: torch.Tensor, next_obs: torch.Tensor, info: Dict[str, Any]) -> Tuple[float, Dict[str, float]]:
+    ...
+    return reward, {}

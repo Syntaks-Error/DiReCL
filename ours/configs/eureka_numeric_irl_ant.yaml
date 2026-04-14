@@ -1,0 +1,16 @@
+rounds: 2
+keep_top_k: 2
+output_dir: outputs/eureka_numeric_irl
+
+inner:
+  env_name: Ant-v4
+  seed: 2026
+  device: cpu
+  sac_epochs: 1
+  sac_steps_per_epoch: 1000
+  sac_log_step_interval: 1000
+  max_ep_len: 1000
+  training_trajs: 2
+  irl_iterations: 1
+  reward_grad_steps: 10
+  reward_lr: 0.01

@@ -1,0 +1,4 @@
+task: AntMujoco
+env_name: ant
+env_id: Ant-v4
+description: make the ant run forward as fast as possible while remaining stable

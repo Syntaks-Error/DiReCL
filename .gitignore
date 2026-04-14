@@ -1,0 +1,8 @@
+**/__pycache__/
+
+# Generated outputs / datasets
+Eureka/eureka/outputs/
+ML-IRL/expert_data/
+ML-IRL/logs/
+ours/expert_data/
+ours/outputs/
