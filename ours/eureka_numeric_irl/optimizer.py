@@ -18,15 +18,24 @@ from .reward_parser import ParameterizedReward
 class InnerLoopConfig:
     env_name: str = "Ant-v4"
     seed: int = 2026
-    device: str = "cpu"
-    sac_epochs: int = 2
-    sac_steps_per_epoch: int = 2000
-    sac_log_step_interval: int = 1000
+    device: str = "cuda:0"
+    objective: str = "maxentirl_sa"
+    expert_episodes: int = 1
+    resample_episodes: int = 1
+    sac_epochs: int = 1000
+    sac_steps_per_epoch: int = 1000
+    sac_log_step_interval: int = 5000
     max_ep_len: int = 1000
-    training_trajs: int = 4
-    irl_iterations: int = 2
-    reward_grad_steps: int = 20
-    reward_lr: float = 5e-3
+    training_trajs: int = 10
+    irl_iterations: int = 1
+    reward_grad_steps: int = 1
+    reward_lr: float = 1e-4
+    reward_weight_decay: float = 1e-3
+    reward_momentum: float = 0.9
+    learning_starts: int = 10000
+    buffer_size: int = 1000000
+    num_test_episodes: int = 10
+    grad_clip_norm: float = 10.0
 
 
 @dataclass
@@ -44,6 +53,8 @@ class CandidateResult:
     parse_mode: Optional[str] = None
     train_log: List[str] = None
     sac_info: Dict[str, List[float]] = None
+    initial_param_values: List[float] = None
+    trained_reward_code: Optional[str] = None
 
 
 class MLIRLNumericOptimizer:
@@ -64,16 +75,18 @@ class MLIRLNumericOptimizer:
         self.obs_dim = self.env.observation_space.shape[0]
         self.act_dim = self.env.action_space.shape[0]
 
-        self.expert_states, self.expert_actions = self._load_expert_data()
+        self.expert_states, self.expert_actions, self.expert_trajs, self.expert_actions_trajs = self._load_expert_data()
 
     def _load_expert_data(self):
         env_tag = self.cfg.env_name.split("-")[0]
         expert_dir = self.workspace_root / "expert_data" / env_tag
         states = np.load(expert_dir / "states.npy").astype(np.float32)
         actions = np.load(expert_dir / "actions.npy").astype(np.float32)
-        states = states.reshape(-1, states.shape[-1])
-        actions = actions.reshape(-1, actions.shape[-1])
-        return states, actions
+        states = states[: self.cfg.expert_episodes]
+        actions = actions[: self.cfg.expert_episodes]
+        states_flat = states.reshape(-1, states.shape[-1])
+        actions_flat = actions.reshape(-1, actions.shape[-1])
+        return states_flat, actions_flat, states, actions
 
     def _make_sac(self, reward_model: ParameterizedReward):
         env_fn = lambda: gym.make(self.cfg.env_name)
@@ -94,31 +107,58 @@ class MLIRLNumericOptimizer:
             policy_kwargs={"net_arch": [256, 256]},
             learning_rate=3e-4,
             batch_size=256,
-            learning_starts=1000,
+            learning_starts=self.cfg.learning_starts,
             train_freq=1,
             gradient_steps=1,
             tau=0.005,
             gamma=0.99,
             ent_coef="auto",
-            buffer_size=200000,
-            num_test_episodes=3,
+            buffer_size=self.cfg.buffer_size,
+            num_test_episodes=self.cfg.num_test_episodes,
         )
 
         sac.reward_function = lambda sa_vec: reward_model.scalar_reward_from_state_action(sa_vec, self.obs_dim)
         return sac
 
-    def _ml_irl_loss(self, reward_model: ParameterizedReward, s_agent, a_agent):
-        sA = torch.as_tensor(s_agent, dtype=torch.float32, device=self.device)
-        aA = torch.as_tensor(a_agent, dtype=torch.float32, device=self.device)
-        sE = torch.as_tensor(self.expert_states, dtype=torch.float32, device=self.device)
-        aE = torch.as_tensor(self.expert_actions, dtype=torch.float32, device=self.device)
+    def _sample_expert_sa(self):
+        if self.cfg.resample_episodes > self.cfg.expert_episodes:
+            idx = np.random.choice(self.expert_trajs.shape[0], self.cfg.resample_episodes, replace=True)
+            sE = self.expert_trajs[idx].copy()
+            aE = self.expert_actions_trajs[idx].copy()
+        elif self.cfg.resample_episodes > 0:
+            k = min(self.cfg.resample_episodes, self.expert_trajs.shape[0])
+            idx = np.random.choice(self.expert_trajs.shape[0], k, replace=False)
+            sE = self.expert_trajs[idx].copy()
+            aE = self.expert_actions_trajs[idx].copy()
+        else:
+            sE = self.expert_trajs
+            aE = self.expert_actions_trajs
 
-        rA = reward_model(sA, aA)
-        rE = reward_model(sE, aE)
+        return sE.reshape(-1, sE.shape[-1]), aE.reshape(-1, aE.shape[-1])
 
-        loss = rA.mean() - rE.mean()
-        gap = (rE.mean() - rA.mean()).detach().cpu().item()
-        return loss, float(gap)
+    def _ml_irl_loss(self, reward_model: ParameterizedReward, agent_samples):
+        sA, aA, _ = agent_samples
+        _, T, _ = sA.shape
+
+        sA_vec = torch.as_tensor(sA.reshape(-1, sA.shape[-1]), dtype=torch.float32, device=self.device)
+        aA_vec = torch.as_tensor(aA.reshape(-1, aA.shape[-1]), dtype=torch.float32, device=self.device)
+
+        sE_np, aE_np = self._sample_expert_sa()
+        sE_vec = torch.as_tensor(sE_np, dtype=torch.float32, device=self.device)
+        aE_vec = torch.as_tensor(aE_np, dtype=torch.float32, device=self.device)
+
+        if self.cfg.objective == "maxentirl":
+            rA = reward_model(sA_vec, None)
+            rE = reward_model(sE_vec, None)
+        elif self.cfg.objective == "maxentirl_sa":
+            rA = reward_model(sA_vec, aA_vec)
+            rE = reward_model(sE_vec, aE_vec)
+        else:
+            raise ValueError(f"Unsupported objective: {self.cfg.objective}")
+
+        loss = T * (rA.mean() - rE.mean())
+        gap = float((rE.mean() - rA.mean()).detach().cpu().item())
+        return loss, gap
 
     def optimize_candidate(
         self, name: str, code: str, log_fn: Optional[Callable[[str], None]] = None
@@ -147,7 +187,12 @@ class MLIRLNumericOptimizer:
         _log(f"[{name}] reward parameter initializes: {parse_report.constants}")
         train_log.append(f"reward parameter initializes: {parse_report.constants}")
 
-        optimizer = torch.optim.Adam([reward_model.params], lr=self.cfg.reward_lr)
+        optimizer = torch.optim.Adam(
+            [reward_model.params],
+            lr=self.cfg.reward_lr,
+            weight_decay=self.cfg.reward_weight_decay,
+            betas=(self.cfg.reward_momentum, 0.999),
+        )
 
         _log(f"[{name}] ML-IRL policy optimizer (SAC) setup begins")
         train_log.append("ML-IRL policy optimizer (SAC) setup begins")
@@ -180,25 +225,28 @@ class MLIRLNumericOptimizer:
                 n=self.cfg.training_trajs,
                 state_indices=list(range(self.obs_dim)),
             )
-            sA, aA, _ = samples
-            sA = sA.reshape(-1, sA.shape[-1])
-            aA = aA.reshape(-1, aA.shape[-1])
             _log(
                 f"[{name}] [irl_iter={irl_itr}] trajectory collection done: "
-                f"state_samples={sA.shape[0]}, action_samples={aA.shape[0]}"
+                f"state_samples={samples[0].shape[0] * samples[0].shape[1]}, "
+                f"action_samples={samples[1].shape[0] * samples[1].shape[1]}"
             )
             train_log.append(
-                f"irl_iter={irl_itr} trajectory collection done state_samples={sA.shape[0]} action_samples={aA.shape[0]}"
+                (
+                    f"irl_iter={irl_itr} trajectory collection done "
+                    f"state_samples={samples[0].shape[0] * samples[0].shape[1]} "
+                    f"action_samples={samples[1].shape[0] * samples[1].shape[1]}"
+                )
             )
 
             for grad_step in range(self.cfg.reward_grad_steps):
-                loss, gap = self._ml_irl_loss(reward_model, sA, aA)
+                loss, gap = self._ml_irl_loss(reward_model, samples)
                 if not torch.isfinite(loss):
                     raise RuntimeError(f"Non-finite ML-IRL loss detected at grad_step={grad_step}: {loss}")
                 optimizer.zero_grad()
                 loss.backward()
                 if reward_model.params.grad is None:
                     raise RuntimeError("Reward parameter gradient is None. Reward code likely detached from graph.")
+                torch.nn.utils.clip_grad_norm_([reward_model.params], self.cfg.grad_clip_norm)
                 grad_norm = float(torch.norm(reward_model.params.grad.detach()).cpu().item())
                 if not np.isfinite(grad_norm):
                     raise RuntimeError(f"Non-finite gradient norm detected at grad_step={grad_step}: {grad_norm}")
@@ -233,6 +281,8 @@ class MLIRLNumericOptimizer:
             parse_mode=parse_report.mode,
             train_log=train_log,
             sac_info=sac_info,
+            initial_param_values=parse_report.constants,
+            trained_reward_code=reward_model.export_trained_code(),
         )
 
     def optimize_batch(
@@ -262,6 +312,8 @@ class MLIRLNumericOptimizer:
                         error=tb,
                         train_log=[f"failed: {e}", tb],
                         sac_info={"test_rets": [], "alphas": [], "log_pis": [], "time_steps": []},
+                        initial_param_values=[],
+                        trained_reward_code=None,
                     )
                 )
         return results

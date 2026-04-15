@@ -64,7 +64,7 @@ class EurekaNumericIRL:
 
         self.eureka_root = self.workspace_root.parent / "Eureka" / "eureka"
         self.prompt_dir = self.eureka_root / "utils" / "prompts"
-        self.env_obs_file = self.eureka_root / "envs" / "mujoco" / f"{self.config.env_name}_obs.py"
+        self.env_obs_file = self.eureka_root / "envs" / "mujoco" / f"{self.config.env_name}.py"
 
     @staticmethod
     def _append_log(log_file: Path, msg: str):
@@ -176,12 +176,17 @@ class EurekaNumericIRL:
     ):
         (out_dir / f"env_iter{iter_id}_response{response_id}.txt").write_text(response_text, encoding="utf-8")
         (out_dir / f"env_iter{iter_id}_response{response_id}_rewardonly.py").write_text(code + "\n", encoding="utf-8")
+        if result.trained_reward_code is not None:
+            (out_dir / f"env_iter{iter_id}_response{response_id}_trained_reward.py").write_text(
+                result.trained_reward_code, encoding="utf-8"
+            )
         (out_dir / f"env_iter{iter_id}_response{response_id}.metrics.json").write_text(
             json.dumps(
                 {
                     "name": result.name,
                     "final_loss": result.final_loss,
                     "final_gap": result.final_gap,
+                    "initial_param_values": result.initial_param_values,
                     "param_values": result.param_values,
                     "parsed_param_count": result.parsed_param_count,
                     "parse_source_fn": result.parse_source_fn,
@@ -251,7 +256,8 @@ class EurekaNumericIRL:
                 run_log,
                 (
                     f"iteration {iter_id}: best candidate={best.name} best_gap={best.final_gap} "
-                    f"best_loss={best.final_loss} parsed_params={best.parsed_param_count}"
+                    f"best_loss={best.final_loss} parsed_params={best.parsed_param_count} "
+                    f"initial_params={best.initial_param_values} trained_params={best.param_values}"
                 ),
             )
 
@@ -283,6 +289,7 @@ class EurekaNumericIRL:
                             "name": r.name,
                             "final_gap": r.final_gap,
                             "final_loss": r.final_loss,
+                            "initial_param_values": r.initial_param_values,
                             "param_values": r.param_values,
                             "parsed_param_count": r.parsed_param_count,
                             "parse_source_fn": r.parse_source_fn,
@@ -305,6 +312,8 @@ class EurekaNumericIRL:
             raise RuntimeError("No valid generated reward candidate was produced.")
 
         (out_dir / "best_reward.py").write_text(best_overall.code + "\n", encoding="utf-8")
+        if best_overall.trained_reward_code is not None:
+            (out_dir / "best_reward_trained.py").write_text(best_overall.trained_reward_code, encoding="utf-8")
         self._append_log(run_log, f"run completed. best candidate={best_overall.name}")
 
         return {

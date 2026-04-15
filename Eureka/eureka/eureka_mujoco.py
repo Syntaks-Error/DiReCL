@@ -181,7 +181,7 @@ def run_mujoco(cfg):
     suffix = cfg.suffix
     model = cfg.model
 
-    task_obs_file = f"{EUREKA_ROOT_DIR}/envs/mujoco/{env_name}_obs.py"
+    task_obs_file = f"{EUREKA_ROOT_DIR}/envs/mujoco/{env_name}.py"
     if not os.path.exists(task_obs_file):
         raise FileNotFoundError(f"Missing MuJoCo observation context file: {task_obs_file}")
 

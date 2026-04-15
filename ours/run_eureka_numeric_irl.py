@@ -18,7 +18,7 @@ def load_config(path: Path) -> OuterLoopConfig:
     cfg = OuterLoopConfig(
         model=raw.get("model", "deepseek-chat"),
         base_url=raw.get("base_url", "https://api.deepseek.com"),
-        temperature=raw.get("temperature", 0.7),
+        temperature=raw.get("temperature", 1.0),
         iteration=raw.get("iteration", 2),
         sample=raw.get("sample", 2),
         output_dir=raw.get("output_dir", "outputs/eureka_numeric_irl"),

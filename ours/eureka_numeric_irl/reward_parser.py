@@ -104,7 +104,14 @@ class ParameterizedReward(nn.Module):
         self.code = code
         self.fn_name = fn_name
         self.device = torch.device(device)
-        self._compiled_fn, constants, self._source_fn_name, self._mode = self._compile(code, fn_name)
+        (
+            self._compiled_fn,
+            constants,
+            self._source_fn_name,
+            self._mode,
+            self._transformed_source,
+            self._target_fn_name,
+        ) = self._compile(code, fn_name)
         self.params = nn.Parameter(torch.tensor(constants, dtype=torch.float32, device=self.device))
 
     @staticmethod
@@ -161,7 +168,8 @@ class ParameterizedReward(nn.Module):
         if compiled_fn is None:
             raise RuntimeError(f"Failed to compile function '{target_name}'.")
 
-        return compiled_fn, transformer.constants, source_fn_name, mode
+        transformed_source = ast.unparse(transformed_module)
+        return compiled_fn, transformer.constants, source_fn_name, mode, transformed_source, target_name
 
     def forward(self, obs: torch.Tensor, act: torch.Tensor | None = None) -> torch.Tensor:
         if act is None:
@@ -185,4 +193,18 @@ class ParameterizedReward(nn.Module):
             source_fn_name=self._source_fn_name,
             mode=self._mode,
             constants=self.params.detach().cpu().tolist(),
+        )
+
+    def export_trained_code(self) -> str:
+        trained_params = self.params.detach().cpu().tolist()
+        return (
+            "import torch\n\n"
+            "# Original LLM-generated code\n"
+            f"{self.code.strip()}\n\n"
+            "# Parameterized transformed reward code used during ML-IRL optimization\n"
+            f"{self._transformed_source.strip()}\n\n"
+            f"TRAINED_PARAMS = {trained_params}\n\n"
+            "def reward_fn_trained(obs, act):\n"
+            "    params = torch.as_tensor(TRAINED_PARAMS, device=obs.device, dtype=obs.dtype)\n"
+            f"    return {self._target_fn_name}(obs, act, params)\n"
         )
