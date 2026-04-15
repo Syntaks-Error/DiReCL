@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 import sys
+import traceback
 from dataclasses import dataclass
 import importlib
 from pathlib import Path
-from typing import Dict, List
+from typing import Callable, Dict, List, Optional
 
 import gymnasium as gym
 import numpy as np
@@ -35,6 +36,14 @@ class CandidateResult:
     final_gap: float
     param_values: List[float]
     code: str
+    loss_trace: List[float]
+    gap_trace: List[float]
+    error: Optional[str] = None
+    parsed_param_count: int = 0
+    parse_source_fn: Optional[str] = None
+    parse_mode: Optional[str] = None
+    train_log: List[str] = None
+    sac_info: Dict[str, List[float]] = None
 
 
 class MLIRLNumericOptimizer:
@@ -111,17 +120,59 @@ class MLIRLNumericOptimizer:
         gap = (rE.mean() - rA.mean()).detach().cpu().item()
         return loss, float(gap)
 
-    def optimize_candidate(self, name: str, code: str) -> CandidateResult:
+    def optimize_candidate(
+        self, name: str, code: str, log_fn: Optional[Callable[[str], None]] = None
+    ) -> CandidateResult:
+        def _log(msg: str):
+            if log_fn is not None:
+                log_fn(msg)
+            else:
+                print(msg, flush=True)
+
+        train_log: List[str] = []
+
+        _log(f"[{name}] reward parameter parsing begins")
+        train_log.append("reward parameter parsing begins")
         reward_model = ParameterizedReward(code=code, fn_name="reward_fn", device=self.cfg.device).to(self.device)
+        parse_report = reward_model.report()
+        _log(
+            f"[{name}] reward parsing success: source_fn={parse_report.source_fn_name}, "
+            f"mode={parse_report.mode}, parsed_params={len(parse_report.constants)}"
+        )
+        train_log.append(
+            f"reward parsing success source_fn={parse_report.source_fn_name} mode={parse_report.mode} "
+            f"parsed_params={len(parse_report.constants)}"
+        )
+
+        _log(f"[{name}] reward parameter initializes: {parse_report.constants}")
+        train_log.append(f"reward parameter initializes: {parse_report.constants}")
+
         optimizer = torch.optim.Adam([reward_model.params], lr=self.cfg.reward_lr)
 
+        _log(f"[{name}] ML-IRL policy optimizer (SAC) setup begins")
+        train_log.append("ML-IRL policy optimizer (SAC) setup begins")
         sac = self._make_sac(reward_model)
 
         last_loss = 0.0
         last_gap = 0.0
+        loss_trace: List[float] = []
+        gap_trace: List[float] = []
+        sac_info = {"test_rets": [], "alphas": [], "log_pis": [], "time_steps": []}
 
-        for _ in range(self.cfg.irl_iterations):
-            sac.learn_mujoco(print_out=False)
+        _log(f"[{name}] ML-IRL training begins: irl_iterations={self.cfg.irl_iterations}")
+        train_log.append(f"ML-IRL training begins irl_iterations={self.cfg.irl_iterations}")
+
+        for irl_itr in range(self.cfg.irl_iterations):
+            _log(f"[{name}] [irl_iter={irl_itr}] SAC learning begins")
+            train_log.append(f"irl_iter={irl_itr} SAC learning begins")
+            sac_ret = sac.learn_mujoco(print_out=True)
+            if isinstance(sac_ret, list) and len(sac_ret) == 4:
+                sac_info["test_rets"].extend([float(x) for x in sac_ret[0]])
+                sac_info["alphas"].extend([float(x) for x in sac_ret[1]])
+                sac_info["log_pis"].extend([float(x) for x in sac_ret[2]])
+                sac_info["time_steps"].extend([float(x) for x in sac_ret[3]])
+            _log(f"[{name}] [irl_iter={irl_itr}] SAC learning done")
+            train_log.append(f"irl_iter={irl_itr} SAC learning done")
 
             samples = self.collect.collect_trajectories_policy_single(
                 self.env,
@@ -132,14 +183,42 @@ class MLIRLNumericOptimizer:
             sA, aA, _ = samples
             sA = sA.reshape(-1, sA.shape[-1])
             aA = aA.reshape(-1, aA.shape[-1])
+            _log(
+                f"[{name}] [irl_iter={irl_itr}] trajectory collection done: "
+                f"state_samples={sA.shape[0]}, action_samples={aA.shape[0]}"
+            )
+            train_log.append(
+                f"irl_iter={irl_itr} trajectory collection done state_samples={sA.shape[0]} action_samples={aA.shape[0]}"
+            )
 
-            for _ in range(self.cfg.reward_grad_steps):
+            for grad_step in range(self.cfg.reward_grad_steps):
                 loss, gap = self._ml_irl_loss(reward_model, sA, aA)
+                if not torch.isfinite(loss):
+                    raise RuntimeError(f"Non-finite ML-IRL loss detected at grad_step={grad_step}: {loss}")
                 optimizer.zero_grad()
                 loss.backward()
+                if reward_model.params.grad is None:
+                    raise RuntimeError("Reward parameter gradient is None. Reward code likely detached from graph.")
+                grad_norm = float(torch.norm(reward_model.params.grad.detach()).cpu().item())
+                if not np.isfinite(grad_norm):
+                    raise RuntimeError(f"Non-finite gradient norm detected at grad_step={grad_step}: {grad_norm}")
                 optimizer.step()
                 last_loss = float(loss.detach().cpu().item())
                 last_gap = gap
+                loss_trace.append(last_loss)
+                gap_trace.append(last_gap)
+                _log(
+                    f"[{name}] [irl_iter={irl_itr}] [grad_step={grad_step}] "
+                    f"ml_irl_loss={last_loss:.6f}, gap={last_gap:.6f}, grad_norm={grad_norm:.6f}, "
+                    f"params={reward_model.params.detach().cpu().tolist()}"
+                )
+                train_log.append(
+                    f"irl_iter={irl_itr} grad_step={grad_step} ml_irl_loss={last_loss:.6f} "
+                    f"gap={last_gap:.6f} grad_norm={grad_norm:.6f}"
+                )
+
+        _log(f"[{name}] ML-IRL training completed")
+        train_log.append("ML-IRL training completed")
 
         return CandidateResult(
             name=name,
@@ -147,14 +226,30 @@ class MLIRLNumericOptimizer:
             final_gap=last_gap,
             param_values=reward_model.params.detach().cpu().tolist(),
             code=code,
+            loss_trace=loss_trace,
+            gap_trace=gap_trace,
+            parsed_param_count=len(parse_report.constants),
+            parse_source_fn=parse_report.source_fn_name,
+            parse_mode=parse_report.mode,
+            train_log=train_log,
+            sac_info=sac_info,
         )
 
-    def optimize_batch(self, candidates: Dict[str, str]) -> List[CandidateResult]:
+    def optimize_batch(
+        self,
+        candidates: Dict[str, str],
+        log_fn: Optional[Callable[[str], None]] = None,
+    ) -> List[CandidateResult]:
         results = []
         for name, code in candidates.items():
             try:
-                results.append(self.optimize_candidate(name=name, code=code))
+                results.append(self.optimize_candidate(name=name, code=code, log_fn=log_fn))
             except Exception as e:
+                tb = traceback.format_exc()
+                if log_fn is not None:
+                    log_fn(f"[{name}] failed: {e}")
+                    for line in tb.rstrip().splitlines():
+                        log_fn(f"[{name}] traceback: {line}")
                 results.append(
                     CandidateResult(
                         name=name,
@@ -162,6 +257,11 @@ class MLIRLNumericOptimizer:
                         final_gap=float("-inf"),
                         param_values=[],
                         code=f"# failed: {e}\n" + code,
+                        loss_trace=[],
+                        gap_trace=[],
+                        error=tb,
+                        train_log=[f"failed: {e}", tb],
+                        sac_info={"test_rets": [], "alphas": [], "log_pis": [], "time_steps": []},
                     )
                 )
         return results

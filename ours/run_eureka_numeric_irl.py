@@ -16,9 +16,14 @@ def load_config(path: Path) -> OuterLoopConfig:
 
     inner = InnerLoopConfig(**raw.get("inner", {}))
     cfg = OuterLoopConfig(
-        rounds=raw.get("rounds", 2),
-        keep_top_k=raw.get("keep_top_k", 2),
+        model=raw.get("model", "deepseek-chat"),
+        base_url=raw.get("base_url", "https://api.deepseek.com"),
+        temperature=raw.get("temperature", 0.7),
+        iteration=raw.get("iteration", 2),
+        sample=raw.get("sample", 2),
         output_dir=raw.get("output_dir", "outputs/eureka_numeric_irl"),
+        env_name=raw.get("env_name", "ant"),
+        env_description=raw.get("env_description", "Train an Ant policy to move forward stably with smooth control."),
         inner=inner,
     )
     return cfg

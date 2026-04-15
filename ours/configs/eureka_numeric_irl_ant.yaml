@@ -1,11 +1,16 @@
-rounds: 2
-keep_top_k: 2
+model: deepseek-chat
+base_url: https://api.deepseek.com
+temperature: 1.0
+iteration: 2
+sample: 2
 output_dir: outputs/eureka_numeric_irl
+env_name: ant
+env_description: Train an Ant policy to move forward stably with smooth control.
 
 inner:
   env_name: Ant-v4
   seed: 2026
-  device: cpu
+  device: cuda:0
   sac_epochs: 1
   sac_steps_per_epoch: 1000
   sac_log_step_interval: 1000

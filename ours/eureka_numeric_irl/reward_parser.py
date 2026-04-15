@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import ast
 from dataclasses import dataclass
-from typing import List
+from typing import List, Optional
 
 import torch
 import torch.nn as nn
@@ -14,7 +14,42 @@ _NON_LEARNABLE_KEYWORDS = {"dim", "axis", "keepdim", "dtype", "device"}
 @dataclass
 class ParseReport:
     fn_name: str
+    source_fn_name: str
+    mode: str
     constants: List[float]
+
+
+class _AnnotationStripper(ast.NodeTransformer):
+    def visit_FunctionDef(self, node: ast.FunctionDef):
+        node = self.generic_visit(node)
+        for arg in node.args.args:
+            arg.annotation = None
+        for arg in node.args.kwonlyargs:
+            arg.annotation = None
+        if node.args.vararg is not None:
+            node.args.vararg.annotation = None
+        if node.args.kwarg is not None:
+            node.args.kwarg.annotation = None
+        node.returns = None
+        return node
+
+
+class _GradientSafeRewriter(ast.NodeTransformer):
+    def visit_Call(self, node: ast.Call):
+        node = self.generic_visit(node)
+
+        if isinstance(node.func, ast.Attribute) and node.func.attr == "item" and len(node.args) == 0:
+            return node.func.value
+
+        if (
+            isinstance(node.func, ast.Attribute)
+            and isinstance(node.func.value, ast.Name)
+            and node.func.value.id == "torch"
+            and node.func.attr == "tensor"
+        ):
+            node.func.attr = "as_tensor"
+
+        return node
 
 
 class _NumericParameterizer(ast.NodeTransformer):
@@ -47,7 +82,9 @@ class _NumericParameterizer(ast.NodeTransformer):
             if isinstance(fn, ast.Name) and fn.id in {"range", "len", "int", "float"}:
                 return False
 
-        return isinstance(node.value, (int, float)) and not isinstance(node.value, bool)
+        # Learn only float literals. Integer literals are frequently used as
+        # tensor indices/shapes and must stay integers to avoid runtime errors.
+        return isinstance(node.value, float)
 
     def visit_Constant(self, node: ast.Constant):
         if not self._should_parameterize(node):
@@ -67,35 +104,64 @@ class ParameterizedReward(nn.Module):
         self.code = code
         self.fn_name = fn_name
         self.device = torch.device(device)
-        self._compiled_fn, constants = self._compile(code, fn_name)
+        self._compiled_fn, constants, self._source_fn_name, self._mode = self._compile(code, fn_name)
         self.params = nn.Parameter(torch.tensor(constants, dtype=torch.float32, device=self.device))
 
     @staticmethod
     def _compile(code: str, fn_name: str):
         module = ast.parse(code)
 
-        fn_nodes = [n for n in module.body if isinstance(n, ast.FunctionDef) and n.name == fn_name]
+        module = _AnnotationStripper().visit(module)
+        module = _GradientSafeRewriter().visit(module)
+        ast.fix_missing_locations(module)
+
+        all_fn_nodes = [n for n in module.body if isinstance(n, ast.FunctionDef)]
+        if not all_fn_nodes:
+            raise ValueError("No function definition found in reward code.")
+
+        candidate_names = [fn_name, "reward_fn", "compute_reward"]
+        fn_nodes = [n for n in all_fn_nodes if n.name in candidate_names]
         if not fn_nodes:
-            raise ValueError(f"Function '{fn_name}' not found in reward code.")
+            fn_nodes = [all_fn_nodes[0]]
 
         fn_node = fn_nodes[0]
+        source_fn_name = fn_node.name
         fn_node.args.args.append(ast.arg(arg="params"))
 
         transformer = _NumericParameterizer()
         transformed_module = transformer.visit(module)
         ast.fix_missing_locations(transformed_module)
 
-        safe_globals = {"torch": torch}
-        safe_locals = {}
-        exec(compile(transformed_module, filename="<reward_code>", mode="exec"), safe_globals, safe_locals)
+        mode = "direct"
+        if source_fn_name == "compute_reward":
+            mode = "compute_reward_wrapper"
+            wrapper_src = (
+                "def reward_fn(obs, act, params):\n"
+                "    vals = []\n"
+                "    n = int(obs.shape[0])\n"
+                "    for i in range(n):\n"
+                "        out = compute_reward(obs[i], act[i], obs[i], {}, params)\n"
+                "        r = out[0] if isinstance(out, tuple) else out\n"
+                "        if torch.is_tensor(r):\n"
+                "            vals.append(r.reshape(-1)[0])\n"
+                "        else:\n"
+                "            vals.append(torch.as_tensor(r, device=obs.device, dtype=obs.dtype))\n"
+                "    return torch.stack(vals)\n"
+            )
+            wrapper_module = ast.parse(wrapper_src)
+            transformed_module.body.extend(wrapper_module.body)
 
-        compiled_fn = safe_locals.get(fn_name)
-        if compiled_fn is None:
-            compiled_fn = safe_globals.get(fn_name)
-        if compiled_fn is None:
-            raise RuntimeError(f"Failed to compile function '{fn_name}'.")
+        namespace = {"torch": torch}
+        exec(compile(transformed_module, filename="<reward_code>", mode="exec"), namespace, namespace)
 
-        return compiled_fn, transformer.constants
+        target_name = fn_name if mode == "direct" else "reward_fn"
+        compiled_fn = namespace.get(target_name)
+        if compiled_fn is None:
+            compiled_fn = namespace.get(target_name)
+        if compiled_fn is None:
+            raise RuntimeError(f"Failed to compile function '{target_name}'.")
+
+        return compiled_fn, transformer.constants, source_fn_name, mode
 
     def forward(self, obs: torch.Tensor, act: torch.Tensor | None = None) -> torch.Tensor:
         if act is None:
@@ -114,4 +180,9 @@ class ParameterizedReward(nn.Module):
         return float(val.detach().cpu().item())
 
     def report(self) -> ParseReport:
-        return ParseReport(fn_name=self.fn_name, constants=self.params.detach().cpu().tolist())
+        return ParseReport(
+            fn_name=self.fn_name,
+            source_fn_name=self._source_fn_name,
+            mode=self._mode,
+            constants=self.params.detach().cpu().tolist(),
+        )
