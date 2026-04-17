@@ -9,17 +9,12 @@ DEFAULT_CAMERA_CONFIG = {
 
 
 class AntEnv(MujocoEnv):
-    """MuJoCo ant environment with oracle reward details intentionally omitted.
+    """MuJoCo Ant-v4 environment with oracle reward details intentionally omitted.
 
-    The file preserves environment dynamics, observations, and termination logic
-    while hiding task-specific reward construction for surrogate-reward design.
+    The file preserves environment dynamics, observations, and termination logic while hiding task-specific reward construction for surrogate-reward design.
 
     ### Description
-
-    The ant is a 3D robot consisting of one torso (free rotational body) with
-    four legs attached to it with each leg having two links. The goal is to
-    coordinate the four legs to move in the forward (right) direction by applying
-    torques on the eight hinges connecting the two links of each leg and the torso
+    The Ant is a 3D robot consisting of one torso (free rotational body) with four legs attached to it with each leg having two links. The goal is to coordinate the four legs to move in the forward (right) direction by applying torques on the eight hinges connecting the two links of each leg and the torso
     (nine parts and eight hinges).
 
     ### Action Space
@@ -208,8 +203,6 @@ class AntEnv(MujocoEnv):
         # Oracle task reward is intentionally hidden.
         reward = 0.0
 
-        if self.render_mode == "human":
-            self.render()
         return observation, reward, terminated, False, info
 
     def _get_obs(self):
@@ -236,11 +229,3 @@ class AntEnv(MujocoEnv):
         observation = self._get_obs()
 
         return observation
-
-    def viewer_setup(self):
-        assert self.viewer is not None
-        for key, value in DEFAULT_CAMERA_CONFIG.items():
-            if isinstance(value, np.ndarray):
-                getattr(self.viewer.cam, key)[:] = value
-            else:
-                setattr(self.viewer.cam, key, value)
