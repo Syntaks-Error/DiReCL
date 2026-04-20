@@ -18,13 +18,13 @@ inner:
   sac_steps_per_epoch: 4000
   sac_log_step_interval: 5000
   max_ep_len: 1000
-  training_trajs: 10
-  irl_iterations: 10
-  reward_grad_steps: 1
-  reward_lr: 0.0001
-  reward_weight_decay: 0.001
-  reward_momentum: 0.9
   learning_starts: 10000
   buffer_size: 1000000
+  training_trajs: 10
+  irl_iterations: 500
+  reward_grad_steps: 1
+  reward_lr: 0.001
+  reward_weight_decay: 0.001
+  reward_momentum: 0.9
   num_test_episodes: 10
   grad_clip_norm: 10.0
