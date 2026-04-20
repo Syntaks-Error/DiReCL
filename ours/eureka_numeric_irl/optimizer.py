@@ -20,14 +20,15 @@ class InnerLoopConfig:
     seed: int = 2026
     device: str = "cuda:0"
     objective: str = "maxentirl_sa"
-    expert_episodes: int = 1
+    expert_episodes: int = 25
     resample_episodes: int = 1
-    sac_epochs: int = 1000
-    sac_steps_per_epoch: int = 1000
+    sac_epochs: int = 5
+    sac_steps_per_epoch: int = 4000
     sac_log_step_interval: int = 5000
     max_ep_len: int = 1000
     training_trajs: int = 10
     irl_iterations: int = 1
+    eval_episodes: int = 20
     reward_grad_steps: int = 1
     reward_lr: float = 1e-4
     reward_weight_decay: float = 1e-3
@@ -70,6 +71,7 @@ class MLIRLNumericOptimizer:
         importlib.import_module("envs")
         self.SAC = importlib.import_module("common.sac").SAC
         self.collect = importlib.import_module("utils.collect")
+        self.eval = importlib.import_module("utils.eval")
 
         self.env = gym.make(cfg.env_name)
         self.obs_dim = self.env.observation_space.shape[0]
@@ -203,6 +205,8 @@ class MLIRLNumericOptimizer:
         loss_trace: List[float] = []
         gap_trace: List[float] = []
         sac_info = {"test_rets": [], "alphas": [], "log_pis": [], "time_steps": []}
+        sac_info["real_det_returns"] = []
+        sac_info["real_sto_returns"] = []
 
         _log(f"[{name}] ML-IRL training begins: irl_iterations={self.cfg.irl_iterations}")
         train_log.append(f"ML-IRL training begins irl_iterations={self.cfg.irl_iterations}")
@@ -264,6 +268,35 @@ class MLIRLNumericOptimizer:
                     f"irl_iter={irl_itr} grad_step={grad_step} ml_irl_loss={last_loss:.6f} "
                     f"gap={last_gap:.6f} grad_norm={grad_norm:.6f}"
                 )
+
+            eval_env_det = gym.make(self.cfg.env_name)
+            eval_env_sto = gym.make(self.cfg.env_name)
+            real_return_det = self.eval.evaluate_real_return(
+                sac.get_action,
+                eval_env_det,
+                self.cfg.eval_episodes,
+                self.cfg.max_ep_len,
+                True,
+            )
+            real_return_sto = self.eval.evaluate_real_return(
+                sac.get_action,
+                eval_env_sto,
+                self.cfg.eval_episodes,
+                self.cfg.max_ep_len,
+                False,
+            )
+            eval_env_det.close()
+            eval_env_sto.close()
+            sac_info["real_det_returns"].append(float(real_return_det))
+            sac_info["real_sto_returns"].append(float(real_return_sto))
+            _log(
+                f"[{name}] [irl_iter={irl_itr}] real reward eval: "
+                f"det_return={float(real_return_det):.4f}, sto_return={float(real_return_sto):.4f}"
+            )
+            train_log.append(
+                f"irl_iter={irl_itr} real reward eval det_return={float(real_return_det):.4f} "
+                f"sto_return={float(real_return_sto):.4f}"
+            )
 
         _log(f"[{name}] ML-IRL training completed")
         train_log.append("ML-IRL training completed")

@@ -82,7 +82,7 @@ class SAC:
         max_ep_len=1000,
         log_step_interval=None,
         reward_state_indices=None,
-        device=torch.device("cpu"),
+        device=torch.device("cuda:0"),
         reinitialize=True,
         sa=False,
         **kwargs,

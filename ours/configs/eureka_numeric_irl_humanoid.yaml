@@ -10,20 +10,19 @@ inner:
   env_name: Humanoid-v4
   seed: 2026
   device: cuda:0
-  objective: maxentirl_sa
-  expert_episodes: 1
+  expert_episodes: 25
   resample_episodes: 1
-  sac_epochs: 2000
-  sac_steps_per_epoch: 1000
+  sac_epochs: 5
+  sac_steps_per_epoch: 4000
   sac_log_step_interval: 5000
   max_ep_len: 1000
-  training_trajs: 10
-  irl_iterations: 1
-  reward_grad_steps: 1
-  reward_lr: 0.0001
-  reward_weight_decay: 0.001
-  reward_momentum: 0.9
   learning_starts: 10000
   buffer_size: 1000000
+  training_trajs: 10
+  irl_iterations: 500
+  reward_grad_steps: 1
+  reward_lr: 0.001
+  reward_weight_decay: 0.001
+  reward_momentum: 0.9
   num_test_episodes: 10
   grad_clip_norm: 10.0
