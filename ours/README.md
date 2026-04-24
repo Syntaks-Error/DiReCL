@@ -13,6 +13,7 @@ This implementation follows your method with an exact Eureka-style outer loop:
 - `eureka_numeric_irl/optimizer.py`: ML-IRL inner-loop optimization
 - `eureka_numeric_irl/outer_loop.py`: exact Eureka-style prompting/reflection outer loop
 - `configs/eureka_numeric_irl_ant.yaml`: default config for Ant
+- `configs/eureka_numeric_irl_commonroad_highd.yaml`: CommonRoad/highD config (PPO + demos in `expert_data/highD`)
 
 ## Run
 
@@ -23,6 +24,13 @@ export OPENAI_API_KEY=your_key
 python run_eureka_numeric_irl.py --config configs/eureka_numeric_irl_ant.yaml
 ```
 
+For CommonRoad/highD:
+
+```bash
+export OPENAI_API_KEY=your_key
+python run_eureka_numeric_irl.py --config configs/eureka_numeric_irl_commonroad_highd.yaml
+```
+
 ## Output
 
 A timestamped folder under `outputs/eureka_numeric_irl/` with:
@@ -30,3 +38,4 @@ A timestamped folder under `outputs/eureka_numeric_irl/` with:
 - `best_reward.py`: best reward skeleton code
 - `summary.json`: iteration history and learned numeric parameters
 - `messages.json`: saved prompt/response history for reflection
+- `best_reward_trained.py`: complete final reward code with learned parameters embedded

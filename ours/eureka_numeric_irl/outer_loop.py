@@ -64,7 +64,8 @@ class EurekaNumericIRL:
 
         self.eureka_root = self.workspace_root.parent / "Eureka" / "eureka"
         self.prompt_dir = self.eureka_root / "utils" / "prompts"
-        self.env_obs_file = self.eureka_root / "envs" / "mujoco" / f"{self.config.env_name}.py"
+        self.env_obs_file = self.eureka_root / "envs" / "mujoco" / f"{self.config.env_name}_obs.py"
+        self.env_fallback_file = self.eureka_root / "envs" / "mujoco" / f"{self.config.env_name}.py"
 
     @staticmethod
     def _append_log(log_file: Path, msg: str):
@@ -83,7 +84,15 @@ class EurekaNumericIRL:
 
         initial_system = initial_system.format(task_reward_signature_string=reward_signature) + code_output_tip
 
-        task_obs = _file_to_string(self.env_obs_file)
+        if self.env_obs_file.exists():
+            task_obs = _file_to_string(self.env_obs_file)
+        elif self.env_fallback_file.exists():
+            task_obs = _file_to_string(self.env_fallback_file)
+        else:
+            task_obs = (
+                "Observation context file is not available in Eureka mujoco templates for this environment. "
+                "Use only variables from function inputs (obs/action/next_obs/info) and keep code differentiable."
+            )
         initial_user = initial_user.format(task_obs_code_string=task_obs, task_description=self.config.env_description)
 
         return [{"role": "system", "content": initial_system}, {"role": "user", "content": initial_user}]

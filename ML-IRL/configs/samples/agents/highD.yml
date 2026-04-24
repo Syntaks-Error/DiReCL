@@ -1,0 +1,45 @@
+obj: maxentirl_sa
+IS: false
+seed: 2026
+cuda: 0
+env:
+  env_name: commonroad-v1
+  T: 324
+  state_indices: all
+  # Paths for CommonRoad env construction
+  commonroad_rl_root: ../commonroad-rl
+  meta_scenario_path: ../commonroad-rl/pickles/meta_scenario
+  train_reset_config_path: ../commonroad-rl/pickles/problem_train
+  test_reset_config_path: ../commonroad-rl/pickles/problem_train
+  config_file: ../commonroad-rl/logs/ppo/commonroad-v1_6/environment_configurations.yml
+  logging_path: ../commonroad-rl/logs/ppo/commonroad-v1_6
+  test_env: true
+  play: false
+  # Expert demos generated from commonroad-rl policy
+  expert_data_dir: expert_data/highD
+irl:
+  training_trajs: 10
+  n_itrs: 200
+  save_interval: 0
+  eval_episodes: 10
+  expert_episodes: 25
+  resample_episodes: 1
+ppo:
+  n_envs: 1
+  # PPO timesteps per IRL iteration. If omitted, script falls back to env.T * n_steps.
+  n_timesteps_per_iter: 32768
+  # Continue training the same PPO policy across iterations.
+  reinitialize: false
+  # Optional hyperparameter overrides merged on top of commonroad-rl PPO defaults.
+  # hyperparams:
+  learning_rate: 0.0005
+reward:
+  use_bn: false
+  residual: false
+  hid_act: relu
+  hidden_sizes: [128, 128]
+  clamp_magnitude: 10
+  lr: 0.0001
+  weight_decay: 1e-3
+  gradient_step: 1
+  momentum: 0.9

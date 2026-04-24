@@ -1,0 +1,48 @@
+model: deepseek-chat
+base_url: https://api.deepseek.com
+temperature: 1.0
+iteration: 2
+sample: 2
+output_dir: outputs/eureka_numeric_irl
+env_name: commonroad
+env_description: Train a CommonRoad policy that drives safely and efficiently, avoids collisions, stays in lane, and makes smooth progress toward the route goal.
+
+inner:
+  agent_algo: ppo
+  env_name: commonroad-v1
+  seed: 2026
+  device: cuda:0
+  objective: maxentirl_sa
+
+  # Expert demos in ours/expert_data/highD
+  expert_data_dir: expert_data/highD
+  expert_episodes: 25
+  resample_episodes: 1
+
+  # CommonRoad construction
+  commonroad_rl_root: ../commonroad-rl
+  meta_scenario_path: ../commonroad-rl/pickles/meta_scenario
+  train_reset_config_path: ../commonroad-rl/pickles/problem_train
+  test_reset_config_path: ../commonroad-rl/pickles/problem_train
+  config_file: ../commonroad-rl/logs/ppo/commonroad-v1_6/environment_configurations.yml
+  logging_path: ../commonroad-rl/logs/ppo/commonroad-v1_6
+  test_env: true
+  play: false
+
+  # Horizon and rollouts
+  max_ep_len: 324
+  training_trajs: 10
+  irl_iterations: 1
+  eval_episodes: 10
+
+  # PPO inner loop
+  ppo_n_envs: 1
+  ppo_timesteps_per_iter: 32768
+  ppo_reinitialize: false
+
+  # Reward parameter optimization
+  reward_grad_steps: 1
+  reward_lr: 0.0001
+  reward_weight_decay: 0.001
+  reward_momentum: 0.9
+  grad_clip_norm: 10.0

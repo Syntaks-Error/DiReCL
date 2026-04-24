@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import sys
 import traceback
 from dataclasses import dataclass
@@ -16,12 +17,33 @@ from .reward_parser import ParameterizedReward
 
 @dataclass
 class InnerLoopConfig:
+    agent_algo: str = "sac"  # sac | ppo
     env_name: str = "Ant-v4"
     seed: int = 2026
     device: str = "cuda:0"
     objective: str = "maxentirl_sa"
     expert_episodes: int = 25
     resample_episodes: int = 1
+    expert_data_dir: Optional[str] = None
+
+    # CommonRoad env construction (used when agent_algo=ppo or env_name starts with commonroad)
+    commonroad_rl_root: str = "../commonroad-rl"
+    meta_scenario_path: Optional[str] = None
+    train_reset_config_path: Optional[str] = None
+    test_reset_config_path: Optional[str] = None
+    config_file: Optional[str] = None
+    logging_path: Optional[str] = None
+    test_env: bool = True
+    play: bool = False
+    render_mode: Optional[str] = None
+
+    # PPO-specific
+    ppo_n_envs: int = 1
+    ppo_timesteps_per_iter: int = 32768
+    ppo_reinitialize: bool = False
+    ppo_hyperparams: Optional[Dict] = None
+
+    # SAC-specific
     sac_epochs: int = 5
     sac_steps_per_epoch: int = 4000
     sac_log_step_interval: int = 5000
@@ -63,6 +85,7 @@ class MLIRLNumericOptimizer:
         self.workspace_root = workspace_root
         self.cfg = cfg
         self.device = torch.device(cfg.device)
+        self.is_commonroad = self.cfg.agent_algo.lower() == "ppo" or self.cfg.env_name.startswith("commonroad")
 
         mlirl_root = workspace_root.parent / "ML-IRL"
         if str(mlirl_root) not in sys.path:
@@ -73,22 +96,106 @@ class MLIRLNumericOptimizer:
         self.collect = importlib.import_module("utils.collect")
         self.eval = importlib.import_module("utils.eval")
 
-        self.env = gym.make(cfg.env_name)
+        self.PPO = None
+        self.read_commonroad_ppo_hyperparams = None
+        self.env_kwargs = {}
+
+        if self.is_commonroad:
+            self._setup_commonroad_imports()
+            ppo_mod = importlib.import_module("common.ppo")
+            self.PPO = ppo_mod.PPO
+            self.read_commonroad_ppo_hyperparams = ppo_mod.read_commonroad_ppo_hyperparams
+            self.env_kwargs = self._build_commonroad_env_kwargs()
+            self.env_fn = lambda: gym.make(self.cfg.env_name, **self.env_kwargs)
+        else:
+            self.env_fn = lambda: gym.make(self.cfg.env_name)
+
+        self.env = self.env_fn()
         self.obs_dim = self.env.observation_space.shape[0]
         self.act_dim = self.env.action_space.shape[0]
+        self.state_indices = list(range(self.obs_dim))
 
-        self.expert_states, self.expert_actions, self.expert_trajs, self.expert_actions_trajs = self._load_expert_data()
+        (
+            self.expert_states,
+            self.expert_actions,
+            self.expert_state_eps,
+            self.expert_action_eps,
+            self.expert_lens,
+        ) = self._load_expert_data()
+
+    def _abs_from_workspace(self, path: Optional[str]) -> Optional[str]:
+        if path is None:
+            return None
+        if os.path.isabs(path):
+            return path
+        return os.path.abspath(os.path.join(str(self.workspace_root), path))
+
+    def _setup_commonroad_imports(self):
+        commonroad_root = self._abs_from_workspace(self.cfg.commonroad_rl_root)
+        if commonroad_root not in sys.path:
+            sys.path.insert(0, commonroad_root)
+        import commonroad_rl.gym_commonroad  # noqa: F401
+
+    def _build_commonroad_env_kwargs(self) -> Dict:
+        kwargs = {}
+        keys = [
+            "meta_scenario_path",
+            "train_reset_config_path",
+            "test_reset_config_path",
+            "config_file",
+            "logging_path",
+            "test_env",
+            "play",
+            "render_mode",
+        ]
+        for k in keys:
+            v = getattr(self.cfg, k)
+            if v is None:
+                continue
+            if k in {
+                "meta_scenario_path",
+                "train_reset_config_path",
+                "test_reset_config_path",
+                "config_file",
+                "logging_path",
+            } and isinstance(v, str):
+                kwargs[k] = self._abs_from_workspace(v)
+            else:
+                kwargs[k] = v
+        return kwargs
 
     def _load_expert_data(self):
-        env_tag = self.cfg.env_name.split("-")[0]
-        expert_dir = self.workspace_root / "expert_data" / env_tag
+        if self.cfg.expert_data_dir is not None:
+            expert_dir = Path(self._abs_from_workspace(self.cfg.expert_data_dir))
+        else:
+            env_tag = "highD" if self.is_commonroad else self.cfg.env_name.split("-")[0]
+            expert_dir = self.workspace_root / "expert_data" / env_tag
+
         states = np.load(expert_dir / "states.npy").astype(np.float32)
         actions = np.load(expert_dir / "actions.npy").astype(np.float32)
-        states = states[: self.cfg.expert_episodes]
-        actions = actions[: self.cfg.expert_episodes]
-        states_flat = states.reshape(-1, states.shape[-1])
-        actions_flat = actions.reshape(-1, actions.shape[-1])
-        return states_flat, actions_flat, states, actions
+        lens_path = expert_dir / "lens.npy"
+        if lens_path.exists():
+            lens = np.load(lens_path).astype(np.int32)
+        else:
+            lens = np.full((states.shape[0],), states.shape[1], dtype=np.int32)
+
+        n_eps = min(int(self.cfg.expert_episodes), states.shape[0])
+        states = states[:n_eps]
+        actions = actions[:n_eps]
+        lens = lens[:n_eps]
+
+        sa_rows = []
+        s_rows = []
+        for ep in range(n_eps):
+            L = int(lens[ep])
+            s = states[ep, :L, :]
+            a = actions[ep, :L, :]
+            s_rows.append(s)
+            sa_rows.append(a)
+
+        states_flat = np.concatenate(s_rows, axis=0).astype(np.float32)
+        actions_flat = np.concatenate(sa_rows, axis=0).astype(np.float32)
+        return states_flat, actions_flat, states, actions, lens
 
     def _make_sac(self, reward_model: ParameterizedReward):
         env_fn = lambda: gym.make(self.cfg.env_name)
@@ -122,21 +229,104 @@ class MLIRLNumericOptimizer:
         sac.reward_function = lambda sa_vec: reward_model.scalar_reward_from_state_action(sa_vec, self.obs_dim)
         return sac
 
-    def _sample_expert_sa(self):
-        if self.cfg.resample_episodes > self.cfg.expert_episodes:
-            idx = np.random.choice(self.expert_trajs.shape[0], self.cfg.resample_episodes, replace=True)
-            sE = self.expert_trajs[idx].copy()
-            aE = self.expert_actions_trajs[idx].copy()
-        elif self.cfg.resample_episodes > 0:
-            k = min(self.cfg.resample_episodes, self.expert_trajs.shape[0])
-            idx = np.random.choice(self.expert_trajs.shape[0], k, replace=False)
-            sE = self.expert_trajs[idx].copy()
-            aE = self.expert_actions_trajs[idx].copy()
-        else:
-            sE = self.expert_trajs
-            aE = self.expert_actions_trajs
+    @staticmethod
+    def _reset_env(env):
+        out = env.reset()
+        return out[0] if isinstance(out, tuple) else out
 
-        return sE.reshape(-1, sE.shape[-1]), aE.reshape(-1, aE.shape[-1])
+    @staticmethod
+    def _step_env(env, action):
+        out = env.step(action)
+        if len(out) == 5:
+            obs, rew, terminated, truncated, info = out
+            return obs, rew, bool(terminated or truncated), info
+        return out
+
+    def _make_ppo(self, reward_model: ParameterizedReward):
+        if self.PPO is None or self.read_commonroad_ppo_hyperparams is None:
+            raise RuntimeError("PPO backend not initialized. Check CommonRoad setup.")
+
+        commonroad_root = self._abs_from_workspace(self.cfg.commonroad_rl_root)
+        policy, ppo_kwargs, normalize, normalize_kwargs = self.read_commonroad_ppo_hyperparams(
+            env_id=self.cfg.env_name,
+            commonroad_root=commonroad_root,
+            n_envs=int(self.cfg.ppo_n_envs),
+            overrides=self.cfg.ppo_hyperparams,
+        )
+
+        ppo_agent = self.PPO(
+            self.env_fn,
+            env_id=self.cfg.env_name,
+            env_kwargs=self.env_kwargs,
+            seed=int(self.cfg.seed),
+            n_envs=int(self.cfg.ppo_n_envs),
+            total_timesteps_per_itr=int(self.cfg.ppo_timesteps_per_iter),
+            policy=policy,
+            ppo_kwargs=ppo_kwargs,
+            normalize=normalize,
+            normalize_kwargs=normalize_kwargs,
+            reward_state_indices=self.state_indices,
+            device=self.device,
+            reinitialize=bool(self.cfg.ppo_reinitialize),
+            max_ep_len=int(self.cfg.max_ep_len),
+        )
+        ppo_agent.reward_function = lambda sa_vec: reward_model.scalar_reward_from_state_action(sa_vec, self.obs_dim)
+        return ppo_agent
+
+    def _collect_agent_rollouts_ppo(self, ppo_agent, n: int, horizon: int):
+        env = self.env_fn()
+        states = np.zeros((n, horizon, len(self.state_indices)), dtype=np.float32)
+        actions = np.zeros((n, horizon, self.act_dim), dtype=np.float32)
+        lens = np.zeros((n,), dtype=np.int32)
+
+        for ep in range(n):
+            obs = self._reset_env(env)
+            ep_len = 0
+            for t in range(horizon):
+                if (
+                    ppo_agent.normalize
+                    and ppo_agent.train_env is not None
+                    and hasattr(ppo_agent.train_env, "normalize_obs")
+                ):
+                    obs_for_store = ppo_agent.train_env.normalize_obs(np.asarray(obs, dtype=np.float32)[None, :])[0]
+                else:
+                    obs_for_store = np.asarray(obs, dtype=np.float32)
+
+                act = ppo_agent.get_action(obs, deterministic=False)
+                obs2, _, done, _ = self._step_env(env, act)
+
+                states[ep, t] = obs_for_store[self.state_indices]
+                actions[ep, t] = np.asarray(act, dtype=np.float32)
+
+                obs = obs2
+                ep_len += 1
+                if done:
+                    break
+            lens[ep] = ep_len
+
+        env.close()
+        return states, actions, lens
+
+    def _sample_expert_sa(self):
+        n_eps = self.expert_state_eps.shape[0]
+        if self.cfg.resample_episodes > self.cfg.expert_episodes:
+            idx = np.random.choice(n_eps, self.cfg.resample_episodes, replace=True)
+        elif self.cfg.resample_episodes > 0:
+            k = min(self.cfg.resample_episodes, n_eps)
+            idx = np.random.choice(n_eps, k, replace=False)
+        else:
+            idx = np.arange(n_eps)
+
+        s_rows = []
+        a_rows = []
+        for ep in idx:
+            L = int(self.expert_lens[int(ep)])
+            s_rows.append(self.expert_state_eps[int(ep), :L, :])
+            a_rows.append(self.expert_action_eps[int(ep), :L, :])
+
+        sE = np.concatenate(s_rows, axis=0).astype(np.float32)
+        aE = np.concatenate(a_rows, axis=0).astype(np.float32)
+        return sE, aE
 
     def _ml_irl_loss(self, reward_model: ParameterizedReward, agent_samples):
         sA, aA, _ = agent_samples
@@ -196,9 +386,10 @@ class MLIRLNumericOptimizer:
             betas=(self.cfg.reward_momentum, 0.999),
         )
 
-        _log(f"[{name}] ML-IRL policy optimizer (SAC) setup begins")
-        train_log.append("ML-IRL policy optimizer (SAC) setup begins")
-        sac = self._make_sac(reward_model)
+        algo_name = "PPO" if self.is_commonroad else "SAC"
+        _log(f"[{name}] ML-IRL policy optimizer ({algo_name}) setup begins")
+        train_log.append(f"ML-IRL policy optimizer ({algo_name}) setup begins")
+        agent = self._make_ppo(reward_model) if self.is_commonroad else self._make_sac(reward_model)
 
         last_loss = 0.0
         last_gap = 0.0
@@ -212,23 +403,31 @@ class MLIRLNumericOptimizer:
         train_log.append(f"ML-IRL training begins irl_iterations={self.cfg.irl_iterations}")
 
         for irl_itr in range(self.cfg.irl_iterations):
-            _log(f"[{name}] [irl_iter={irl_itr}] SAC learning begins")
-            train_log.append(f"irl_iter={irl_itr} SAC learning begins")
-            sac_ret = sac.learn_mujoco(print_out=True)
+            _log(f"[{name}] [irl_iter={irl_itr}] {algo_name} learning begins")
+            train_log.append(f"irl_iter={irl_itr} {algo_name} learning begins")
+            sac_ret = agent.learn_mujoco(print_out=True)
             if isinstance(sac_ret, list) and len(sac_ret) == 4:
                 sac_info["test_rets"].extend([float(x) for x in sac_ret[0]])
                 sac_info["alphas"].extend([float(x) for x in sac_ret[1]])
                 sac_info["log_pis"].extend([float(x) for x in sac_ret[2]])
                 sac_info["time_steps"].extend([float(x) for x in sac_ret[3]])
-            _log(f"[{name}] [irl_iter={irl_itr}] SAC learning done")
-            train_log.append(f"irl_iter={irl_itr} SAC learning done")
+            _log(f"[{name}] [irl_iter={irl_itr}] {algo_name} learning done")
+            train_log.append(f"irl_iter={irl_itr} {algo_name} learning done")
 
-            samples = self.collect.collect_trajectories_policy_single(
-                self.env,
-                sac,
-                n=self.cfg.training_trajs,
-                state_indices=list(range(self.obs_dim)),
-            )
+            if self.is_commonroad:
+                samples = self._collect_agent_rollouts_ppo(
+                    agent,
+                    n=int(self.cfg.training_trajs),
+                    horizon=int(self.cfg.max_ep_len),
+                )
+                samples = (samples[0], samples[1], np.zeros_like(samples[0][:, :, 0]))
+            else:
+                samples = self.collect.collect_trajectories_policy_single(
+                    self.env,
+                    agent,
+                    n=self.cfg.training_trajs,
+                    state_indices=list(range(self.obs_dim)),
+                )
             _log(
                 f"[{name}] [irl_iter={irl_itr}] trajectory collection done: "
                 f"state_samples={samples[0].shape[0] * samples[0].shape[1]}, "
@@ -269,17 +468,17 @@ class MLIRLNumericOptimizer:
                     f"gap={last_gap:.6f} grad_norm={grad_norm:.6f}"
                 )
 
-            eval_env_det = gym.make(self.cfg.env_name)
-            eval_env_sto = gym.make(self.cfg.env_name)
+            eval_env_det = self.env_fn()
+            eval_env_sto = self.env_fn()
             real_return_det = self.eval.evaluate_real_return(
-                sac.get_action,
+                agent.get_action,
                 eval_env_det,
                 self.cfg.eval_episodes,
                 self.cfg.max_ep_len,
                 True,
             )
             real_return_sto = self.eval.evaluate_real_return(
-                sac.get_action,
+                agent.get_action,
                 eval_env_sto,
                 self.cfg.eval_episodes,
                 self.cfg.max_ep_len,
