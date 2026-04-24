@@ -1,0 +1,969 @@
+[INFO] __main__ - Environment id: commonroad-v1
+[INFO] __main__ - Seed: 0
+[INFO] __main__ - Using 1 environments
+[INFO] __main__ - Learning with 1000000 timesteps
+[INFO] __main__ - Model hyperparameters loaded
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Training on /home/wangar/Workspace/commonroad-rl/pickles/problem_train with 35 scenarios
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/commonroad-rl/pickles/problem_test with 16 scenarios
+[INFO] __main__ - Training finished in 1867.69s
+[INFO] __main__ - Saved outputs to logs/ppo/commonroad-v1_6
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization started
+[INFO] commonroad_rl.gym_commonroad.commonroad_env - Testing on /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train with 35 scenarios
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Meta scenario path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Training data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Testing data path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+[DEBUG] commonroad_rl.gym_commonroad.commonroad_env - Initialization done
