@@ -225,6 +225,20 @@ class EurekaNumericIRL:
 
         for iter_id in range(self.config.iteration):
             self._append_log(run_log, f"iteration {iter_id} begins: requesting {self.config.sample} reward codes")
+
+            llm_input_file = out_dir / f"iter{iter_id}_llm_input_messages.txt"
+            llm_input_text = [
+                f"model: {self.config.model}",
+                f"base_url: {self.config.base_url}",
+                f"temperature: {self.config.temperature}",
+                f"sample: {self.config.sample}",
+                "",
+                "messages:",
+                json.dumps(messages, indent=2, ensure_ascii=False),
+            ]
+            llm_input_file.write_text("\n".join(llm_input_text), encoding="utf-8")
+            self._append_log(run_log, f"iteration {iter_id}: saved LLM input messages to {llm_input_file.name}")
+
             responses, token_usage = self._query_llm_samples(messages)
             self._append_log(
                 run_log,
