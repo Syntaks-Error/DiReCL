@@ -1,0 +1,44 @@
+obj: airl
+IS: false
+seed: -1
+cuda: -1
+
+env:
+  env_name: commonroad-v1
+
+  # Ensure commonroad-rl package can be imported and env can be registered
+  commonroad_project_path: /home/wangar/Workspace/hw/commonroad-rl
+
+  # CommonRoad environment kwargs
+  meta_scenario_path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+  train_reset_config_path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_train
+  test_reset_config_path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_test
+  test_env: false
+  play: false
+
+  # Use the same env config as expert model when available
+  config_file: /home/wangar/Workspace/hw/commonroad-rl/logs/ppo/commonroad-v1_6/environment_configurations.yml
+
+# AIRL parameters
+airl:
+  total_timesteps: 1000000
+  expert_episodes: 25
+  eval_episodes: 5
+  eval_freq: 20000
+  demo_batch_size: 1024
+  gen_replay_buffer_capacity: 4096
+  n_disc_updates_per_round: 8
+  n_envs: 1
+
+  # AIRL highD expert data path under ./AIRL
+  expert_data_dir: /home/wangar/Workspace/hw/AIRL/expert_data
+
+# PPO learner parameters
+ppo:
+  batch_size: 128
+  learning_rate: 0.0003
+  gamma: 0.99
+  clip_range: 0.2
+  ent_coef: 0.0
+  vf_coef: 0.5
+  n_epochs: 10

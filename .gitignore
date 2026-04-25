@@ -1,6 +1,8 @@
 **/__pycache__/
 
 # Generated outputs / datasets
+AIRL/logs/
+AIRL/expert_data
 Eureka/eureka/outputs/
 ML-IRL/expert_data/
 ML-IRL/logs/
