@@ -301,6 +301,9 @@ def main():
         json.dump(v, f, indent=2, sort_keys=True)
 
     os.makedirs(os.path.join(log_folder, "model"), exist_ok=True)
+    save_best_policy = _is_commonroad_env(env_name)
+    best_model_path = os.path.join(log_folder, "model", "best_model.zip")
+    best_eval_reward = -np.inf
 
     # Load expert trajectories
     print("Loading expert trajectories...")
@@ -393,6 +396,11 @@ def main():
             f"Round {round_i + 1} - Mean reward: {mean_reward:.2f} ± {std_reward:.2f}, Improvement: {improvement:.2f}"
         )
 
+        if save_best_policy and mean_reward > best_eval_reward:
+            best_eval_reward = mean_reward
+            learner.save(best_model_path)
+            print(f"New best policy saved to: {best_model_path} (mean eval reward: {best_eval_reward:.2f})")
+
         # Log to progress CSV
         with open(progress_file, "a") as f:
             f.write(
@@ -438,6 +446,8 @@ def main():
     learner_path = os.path.join(log_folder, "model", "learner_policy.zip")
     learner.save(learner_path)
     print(f"Learner policy saved to: {learner_path}")
+    if save_best_policy and os.path.exists(best_model_path):
+        print(f"Best policy checkpoint saved to: {best_model_path}")
 
     reward_net_path = os.path.join(log_folder, "model", "reward_net.pt")
     torch.save(reward_net.state_dict(), reward_net_path)

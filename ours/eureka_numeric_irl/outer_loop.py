@@ -1,9 +1,10 @@
 from __future__ import annotations
 
+import asyncio
+import ast
 import json
 import os
 import re
-import time
 from dataclasses import asdict, dataclass, field
 from datetime import datetime
 from pathlib import Path
@@ -39,6 +40,23 @@ def _extract_code_string(response_cur: str) -> str:
     return code_string
 
 
+def _validate_reward_code(code: str) -> Tuple[bool, str]:
+    try:
+        module = ast.parse(code)
+    except Exception as exc:
+        return False, f"Syntax error: {exc}"
+
+    fn_nodes = [node for node in module.body if isinstance(node, ast.FunctionDef)]
+    if not fn_nodes:
+        return False, "No function definition found."
+
+    fn_node = fn_nodes[0]
+    if not fn_node.body:
+        return False, f"Function '{fn_node.name}' has an empty body."
+
+    return True, ""
+
+
 def _file_to_string(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
@@ -67,6 +85,9 @@ class EurekaNumericIRL:
         self.env_obs_file = self.eureka_root / "envs" / "mujoco" / f"{self.config.env_name}_obs.py"
         self.env_fallback_file = self.eureka_root / "envs" / "mujoco" / f"{self.config.env_name}.py"
 
+        if self.config.env_name == "commonroad":
+            self.env_fallback_file = self.eureka_root / "envs" / "commonroad_highd.py"
+
     @staticmethod
     def _append_log(log_file: Path, msg: str):
         lines = msg.splitlines() if msg else [""]
@@ -83,6 +104,13 @@ class EurekaNumericIRL:
         reward_signature = _file_to_string(self.prompt_dir / "reward_signature_mujoco.txt")
 
         initial_system = initial_system.format(task_reward_signature_string=reward_signature) + code_output_tip
+        initial_system += (
+            "\nHard constraints:\n"
+            "- Output should contain one complete Python function body, not pseudocode.\n"
+            "- Do not reference environment keys unless they are guaranteed by the environment.\n"
+            "- Keep the code syntactically valid and self-contained.\n"
+            "- If the environment is CommonRoad, use only stable observation/action inputs and generic geometric terms.\n"
+        )
 
         if self.env_obs_file.exists():
             task_obs = _file_to_string(self.env_obs_file)
@@ -90,18 +118,18 @@ class EurekaNumericIRL:
             task_obs = _file_to_string(self.env_fallback_file)
         else:
             task_obs = (
-                "Observation context file is not available in Eureka mujoco templates for this environment. "
+                "Observation context file is not available in Eureka templates for this environment. "
                 "Use only variables from function inputs (obs/action/next_obs/info) and keep code differentiable."
             )
         initial_user = initial_user.format(task_obs_code_string=task_obs, task_description=self.config.env_description)
 
         return [{"role": "system", "content": initial_system}, {"role": "user", "content": initial_user}]
 
-    def _query_llm_samples(self, messages: List[Dict[str, str]]) -> Tuple[List[str], Dict[str, int]]:
+    async def _query_llm_samples(self, messages: List[Dict[str, str]]) -> Tuple[List[str], Dict[str, int]]:
         responses: List[str] = []
         usage = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
 
-        client = openai.OpenAI(api_key=os.environ.get("OPENAI_API_KEY"), base_url=self.config.base_url)
+        client = openai.AsyncOpenAI(api_key=os.environ.get("OPENAI_API_KEY"), base_url=self.config.base_url)
         chunk_size = self.config.sample
         total_samples = 0
 
@@ -109,7 +137,7 @@ class EurekaNumericIRL:
             response_cur = None
             for attempt in range(1000):
                 try:
-                    response_cur = client.chat.completions.create(
+                    response_cur = await client.chat.completions.create(
                         model=self.config.model,
                         messages=messages,
                         temperature=self.config.temperature,
@@ -120,7 +148,7 @@ class EurekaNumericIRL:
                 except Exception:
                     if attempt >= 10:
                         chunk_size = max(int(chunk_size / 2), 1)
-                    time.sleep(1)
+                    await asyncio.sleep(1)
 
             if response_cur is None:
                 raise RuntimeError("LLM querying failed after retries.")
@@ -171,6 +199,7 @@ class EurekaNumericIRL:
         content += (
             "The output of the reward function should be python code only. Keep the signature consistent with the task "
             "and make the reward fully differentiable.\n"
+            "Avoid env-specific dictionary keys that may be missing; prefer direct tensor computations from the inputs.\n"
         )
         return content
 
@@ -205,6 +234,7 @@ class EurekaNumericIRL:
                     "gap_trace": result.gap_trace,
                     "train_log": result.train_log,
                     "sac_info": result.sac_info,
+                    "best_policy_path": result.best_policy_path,
                 },
                 indent=2,
             ),
@@ -239,7 +269,7 @@ class EurekaNumericIRL:
             llm_input_file.write_text("\n".join(llm_input_text), encoding="utf-8")
             self._append_log(run_log, f"iteration {iter_id}: saved LLM input messages to {llm_input_file.name}")
 
-            responses, token_usage = self._query_llm_samples(messages)
+            responses, token_usage = asyncio.run(self._query_llm_samples(messages))
             self._append_log(
                 run_log,
                 (
@@ -261,10 +291,65 @@ class EurekaNumericIRL:
                     f"iteration {iter_id} candidate {response_id} parsed from LLM text (chars={len(code)})",
                 )
 
+            validated_candidates = {}
+            validated_meta = []
+            for response_id, response_text, code, name in candidate_meta:
+                ok, reason = _validate_reward_code(code)
+                if not ok:
+                    self._append_log(
+                        run_log,
+                        f"iteration {iter_id} candidate {response_id} rejected before ML-IRL: {reason}",
+                    )
+                    continue
+                validated_candidates[name] = code
+                validated_meta.append((response_id, response_text, code, name))
+
+            if not validated_candidates:
+                self._append_log(
+                    run_log,
+                    f"iteration {iter_id}: no valid reward code candidates after validation; reflecting on syntax errors only",
+                )
+                candidates = {}
+                candidate_meta = []
+                history.append(
+                    {
+                        "iteration": iter_id,
+                        "token_usage": token_usage,
+                        "best_name": None,
+                        "best_gap": float("-inf"),
+                        "best_loss": float("inf"),
+                        "best_params": [],
+                        "results": [],
+                    }
+                )
+                best_feedback = (
+                    "The previous generation produced invalid Python code. "
+                    "Return only syntactically valid Python code.\n"
+                )
+                if len(messages) == 2:
+                    messages += [{"role": "assistant", "content": responses[0] if responses else ""}]
+                    messages += [{"role": "user", "content": best_feedback}]
+                else:
+                    messages[-2] = {"role": "assistant", "content": responses[0] if responses else ""}
+                    messages[-1] = {"role": "user", "content": best_feedback}
+                (out_dir / "messages.json").write_text(json.dumps(messages, indent=2), encoding="utf-8")
+                (out_dir / "summary.json").write_text(
+                    json.dumps({"config": asdict(self.config), "history": history}, indent=2), encoding="utf-8"
+                )
+                continue
+
+            candidates = validated_candidates
+            candidate_meta = validated_meta
+
             self._append_log(
                 run_log, f"iteration {iter_id}: ML-IRL optimization begins for {len(candidates)} candidates"
             )
-            results = self.optimizer.optimize_batch(candidates, log_fn=lambda m: self._append_log(run_log, m))
+            policy_save_dir = out_dir / "policies"
+            results = self.optimizer.optimize_batch(
+                candidates,
+                log_fn=lambda m: self._append_log(run_log, m),
+                policy_save_dir=policy_save_dir,
+            )
             self._append_log(run_log, f"iteration {iter_id}: ML-IRL optimization done")
             result_by_name = {r.name: r for r in results}
 
@@ -320,6 +405,7 @@ class EurekaNumericIRL:
                             "error": r.error,
                             "train_log": r.train_log,
                             "sac_info": r.sac_info,
+                            "best_policy_path": r.best_policy_path,
                         }
                         for r in ranked
                     ],

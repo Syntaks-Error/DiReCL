@@ -251,6 +251,8 @@ def main(cfg_path: str):
     n_timesteps_per_itr = int(ppo_cfg.get("n_timesteps_per_iter", default_timesteps))
 
     max_real_return_det, max_real_return_sto = -np.inf, -np.inf
+    best_policy_score = -np.inf
+    best_policy_path = os.path.join(log_folder, "model", "best_model.zip")
     ppo_agent = None
 
     for itr in range(int(cfg["irl"]["n_itrs"])):
@@ -292,6 +294,14 @@ def main(cfg_path: str):
 
         _, real_return_det, real_return_sto = _try_evaluate(cfg, itr, ppo_agent, env_fn, expert_s, agent_s)
 
+        policy_score = float(real_return_det)
+        if policy_score > best_policy_score:
+            best_policy_score = policy_score
+            ppo_agent.model.save(best_policy_path)
+            print(
+                f"[ML-IRL] New best PPO policy saved: {best_policy_path} " f"(det eval return={best_policy_score:.2f})"
+            )
+
         if real_return_det > max_real_return_det and real_return_sto > max_real_return_sto:
             max_real_return_det, max_real_return_sto = real_return_det, real_return_sto
             torch.save(
@@ -306,6 +316,9 @@ def main(cfg_path: str):
         logger.record_tabular("Reward Loss", float(loss.item()))
         logger.record_tabular("Agent Avg Episode Len", round(float(agent_lens.mean()), 2))
         logger.dump_tabular()
+
+    if os.path.exists(best_policy_path):
+        print(f"[ML-IRL] Best PPO policy checkpoint available at: {best_policy_path}")
 
 
 if __name__ == "__main__":

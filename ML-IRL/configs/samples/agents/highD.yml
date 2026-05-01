@@ -10,7 +10,7 @@ env:
   commonroad_rl_root: ../commonroad-rl
   meta_scenario_path: ../commonroad-rl/pickles/meta_scenario
   train_reset_config_path: ../commonroad-rl/pickles/problem_train
-  test_reset_config_path: ../commonroad-rl/pickles/problem_train
+  test_reset_config_path: ../commonroad-rl/pickles/problem_test
   config_file: ../commonroad-rl/logs/ppo/commonroad-v1_6/environment_configurations.yml
   logging_path: ../commonroad-rl/logs/ppo/commonroad-v1_6
   test_env: true

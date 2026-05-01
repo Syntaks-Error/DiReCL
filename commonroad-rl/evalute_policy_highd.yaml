@@ -1,0 +1,23 @@
+# Evaluation config for evalute_policy_highd.py
+# Keep CLI flags for: --algo, --model_path, --out_dir, --config
+
+# Optional (set to null if VecNormalize was not used during training)
+vecnormalize_path: logs/ppo/commonroad-v1_6/vecnormalize.pkl
+
+# Optional environment configuration YAML used during training
+env_config: logs/ppo/commonroad-v1_6/environment_configurations.yml
+
+# Required CommonRoad/highD paths
+meta_scenario_path: /home/wangar/Workspace/hw/commonroad-rl/pickles/meta_scenario
+problem_path: /home/wangar/Workspace/hw/commonroad-rl/pickles/problem_test
+
+# Evaluation settings
+n_episodes: 200
+max_steps: 2000
+
+device: auto
+deterministic: true
+
+# TTC geometry config
+lane_margin: 1.0
+default_dt: 0.1

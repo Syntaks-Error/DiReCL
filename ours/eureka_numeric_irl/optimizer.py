@@ -78,6 +78,7 @@ class CandidateResult:
     sac_info: Dict[str, List[float]] = None
     initial_param_values: List[float] = None
     trained_reward_code: Optional[str] = None
+    best_policy_path: Optional[str] = None
 
 
 class MLIRLNumericOptimizer:
@@ -353,7 +354,11 @@ class MLIRLNumericOptimizer:
         return loss, gap
 
     def optimize_candidate(
-        self, name: str, code: str, log_fn: Optional[Callable[[str], None]] = None
+        self,
+        name: str,
+        code: str,
+        log_fn: Optional[Callable[[str], None]] = None,
+        policy_save_dir: Optional[Path] = None,
     ) -> CandidateResult:
         def _log(msg: str):
             if log_fn is not None:
@@ -398,6 +403,12 @@ class MLIRLNumericOptimizer:
         sac_info = {"test_rets": [], "alphas": [], "log_pis": [], "time_steps": []}
         sac_info["real_det_returns"] = []
         sac_info["real_sto_returns"] = []
+        best_policy_score = float("-inf")
+        best_policy_path = None
+
+        if self.is_commonroad and policy_save_dir is not None:
+            policy_save_dir.mkdir(parents=True, exist_ok=True)
+            best_policy_path = policy_save_dir / f"{name}_best_model.zip"
 
         _log(f"[{name}] ML-IRL training begins: irl_iterations={self.cfg.irl_iterations}")
         train_log.append(f"ML-IRL training begins irl_iterations={self.cfg.irl_iterations}")
@@ -488,6 +499,26 @@ class MLIRLNumericOptimizer:
             eval_env_sto.close()
             sac_info["real_det_returns"].append(float(real_return_det))
             sac_info["real_sto_returns"].append(float(real_return_sto))
+
+            if (
+                self.is_commonroad
+                and best_policy_path is not None
+                and hasattr(agent, "model")
+                and agent.model is not None
+            ):
+                policy_score = float(real_return_det)
+                if policy_score > best_policy_score:
+                    best_policy_score = policy_score
+                    agent.model.save(str(best_policy_path))
+                    _log(
+                        f"[{name}] [irl_iter={irl_itr}] new best PPO policy saved: {best_policy_path} "
+                        f"(det_return={best_policy_score:.4f})"
+                    )
+                    train_log.append(
+                        f"irl_iter={irl_itr} new best PPO policy saved path={best_policy_path} "
+                        f"det_return={best_policy_score:.4f}"
+                    )
+
             _log(
                 f"[{name}] [irl_iter={irl_itr}] real reward eval: "
                 f"det_return={float(real_return_det):.4f}, sto_return={float(real_return_sto):.4f}"
@@ -515,17 +546,26 @@ class MLIRLNumericOptimizer:
             sac_info=sac_info,
             initial_param_values=parse_report.constants,
             trained_reward_code=reward_model.export_trained_code(),
+            best_policy_path=str(best_policy_path) if best_policy_path is not None else None,
         )
 
     def optimize_batch(
         self,
         candidates: Dict[str, str],
         log_fn: Optional[Callable[[str], None]] = None,
+        policy_save_dir: Optional[Path] = None,
     ) -> List[CandidateResult]:
         results = []
         for name, code in candidates.items():
             try:
-                results.append(self.optimize_candidate(name=name, code=code, log_fn=log_fn))
+                results.append(
+                    self.optimize_candidate(
+                        name=name,
+                        code=code,
+                        log_fn=log_fn,
+                        policy_save_dir=policy_save_dir,
+                    )
+                )
             except Exception as e:
                 tb = traceback.format_exc()
                 if log_fn is not None:
@@ -546,6 +586,7 @@ class MLIRLNumericOptimizer:
                         sac_info={"test_rets": [], "alphas": [], "log_pis": [], "time_steps": []},
                         initial_param_values=[],
                         trained_reward_code=None,
+                        best_policy_path=None,
                     )
                 )
         return results
